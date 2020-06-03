@@ -1,9 +1,9 @@
 """
-Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: MIT-0
 """
 from test.testlib.testcase import BaseTestCase
-from cfnlint import Runner
+from cfnlint.runner import Runner
 
 
 class TestConditions(BaseTestCase):

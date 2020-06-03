@@ -1,5 +1,5 @@
 """
-Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: MIT-0
 """
 import os
@@ -10,7 +10,6 @@ try:  # pragma: no cover
     from pathlib import Path
 except ImportError:  # pragma: no cover
     from pathlib2 import Path
-
 
 
 class LimitSize(CloudFormationLintRule):
@@ -24,15 +23,11 @@ class LimitSize(CloudFormationLintRule):
     def match(self, cfn):
         """Basic Matching"""
         matches = []
-
-        filename = cfn.filename
-
         # Only check if the file exists. The template could be passed in using stdIn
-        if filename:
-            if Path(filename).is_file():
-                statinfo = os.stat(filename)
+        if cfn.filename:
+            if Path(cfn.filename).is_file():
+                statinfo = os.stat(cfn.filename)
                 if statinfo.st_size > LIMITS['template']['body']:
                     message = 'The template file size ({0} bytes) exceeds the limit ({1} bytes)'
                     matches.append(RuleMatch(['Template'], message.format(statinfo.st_size, LIMITS['template']['body'])))
-
         return matches

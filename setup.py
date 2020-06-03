@@ -1,5 +1,5 @@
 """
-Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: MIT-0
 """
 import codecs
@@ -45,7 +45,7 @@ that could potentially be improved'),
         'pyyaml<=5.2;python_version=="3.4"',
         'pyyaml;python_version!="3.4"',
         'six~=1.11',
-        'aws-sam-translator>=1.21.0',
+        'aws-sam-translator>=1.24.0',
         'jsonpatch;python_version!="3.4"',
         'jsonpatch<=1.24;python_version=="3.4"',
         'jsonschema~=3.0',

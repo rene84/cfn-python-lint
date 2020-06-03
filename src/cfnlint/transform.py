@@ -1,5 +1,5 @@
 """
-Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: MIT-0
 """
 import os
@@ -85,6 +85,8 @@ class Transform(object):
                     Transform._update_to_s3_uri('DefinitionUri', resource_dict)
                 else:
                     resource_dict['DefinitionBody'] = ''
+            if resource_type == 'AWS::Serverless::StateMachine':
+                Transform._update_to_s3_uri('DefinitionUri', resource_dict)
 
     def transform_template(self):
         """

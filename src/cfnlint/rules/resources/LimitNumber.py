@@ -1,5 +1,5 @@
 """
-Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: MIT-0
 """
 from cfnlint.rules import CloudFormationLintRule
@@ -17,13 +17,9 @@ class LimitNumber(CloudFormationLintRule):
 
     def match(self, cfn):
         """Check CloudFormation Resources"""
-
         matches = []
-
-        # Check number of resources against the defined limit
         resources = cfn.get_resources()
-        if len(resources) > LIMITS['resources']['number']:
+        if len(resources) > LIMITS['Resources']['number']:
             message = 'The number of resources ({0}) exceeds the limit ({1})'
-            matches.append(RuleMatch(['Resources'], message.format(len(resources), LIMITS['resources']['number'])))
-
+            matches.append(RuleMatch(['Resources'], message.format(len(resources), LIMITS['Resources']['number'])))
         return matches

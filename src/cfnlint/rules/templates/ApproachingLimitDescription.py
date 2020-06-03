@@ -1,5 +1,5 @@
 """
-Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: MIT-0
 """
 from cfnlint.rules import CloudFormationLintRule
@@ -18,12 +18,8 @@ class LimitDescription(CloudFormationLintRule):
     def match(self, cfn):
         """Basic Matching"""
         matches = []
-
         description = cfn.template.get('Description', '')
-
         if LIMITS['threshold'] * LIMITS['template']['description'] < len(description) <= LIMITS['template']['description']:
-            path = ['Template', 'Description']
             message = 'The template description ({0} bytes) is approaching the limit ({1} bytes)'
-            matches.append(RuleMatch(path, message.format(len(description), LIMITS['template']['description'])))
-
+            matches.append(RuleMatch(['Template', 'Description'], message.format(len(description), LIMITS['template']['description'])))
         return matches
